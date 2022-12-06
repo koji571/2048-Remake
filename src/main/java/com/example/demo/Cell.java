@@ -21,20 +21,29 @@ public class Cell {
     }
 
     Cell(double x, double y, double scale, Group root) {
+        //assigning class type rectangle
         rectangle = new Rectangle();
+        //setting position
         rectangle.setX(x);
         rectangle.setY(y);
         rectangle.setHeight(scale);
         rectangle.setWidth(scale);
+
+        //set group
         this.root = root;
+        //set colour
         rectangle.setFill(Color.rgb(224, 226, 226, 0.5));
+        //assigning text to a rectangle cell
         this.textClass = TextMaker.getSingleInstance().madeText("0", x, y, root);
+        //adding the rectangle to the group
         root.getChildren().add(rectangle);
     }
 
+    //setter method to assign text
     void setTextClass(Text textClass) {
         this.textClass = textClass;
     }
+
 
     void changeCell(Cell cell) {
         TextMaker.changeTwoText(textClass, cell.getTextClass());
@@ -51,6 +60,7 @@ public class Cell {
         cell.setColorByNumber(cell.getNumber());
     }
 
+    //function to add number to two cells together
     void adder(Cell cell) {
         cell.getTextClass().setText((cell.getNumber() + this.getNumber()) + "");
         textClass.setText("0");
@@ -59,6 +69,7 @@ public class Cell {
         setColorByNumber(getNumber());
     }
 
+    //set colour of cells
     void setColorByNumber(int number) {
         switch (number) {
             case 0:

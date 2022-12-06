@@ -12,13 +12,29 @@ import javafx.stage.Stage;
 import java.util.Random;
 
 class GameScene {
+
+    //dimension of all the cells
     private static int HEIGHT = 700;
+
+    //number of cells horizontally, vertically
     private static int n = 4;
+
+    //distance between cells
     private final static int distanceBetweenCells = 10;
+
+    //unknown
     private static double LENGTH = (HEIGHT - ((n + 1) * distanceBetweenCells)) / (double) n;
+
+    //unknown
     private TextMaker textMaker = TextMaker.getSingleInstance();
+
+    //cell data for score values
     private Cell[][] cells = new Cell[n][n];
+
+
     private Group root;
+
+    //set base score
     private long score = 0;
 
     static void setN(int number) {
@@ -26,16 +42,20 @@ class GameScene {
         LENGTH = (HEIGHT - ((n + 1) * distanceBetweenCells)) / (double) n;
     }
 
+    //getter method for length
     static double getLENGTH() {
         return LENGTH;
     }
 
+    //function to fill in random 2,4 into open cells
     private void randomFillNumber(int turn) {
 
         Cell[][] emptyCells = new Cell[n][n];
         int a = 0;
         int b = 0;
         int aForBound=0,bForBound=0;
+
+        //traverse the cells to locate 0
         outer:
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
@@ -56,22 +76,27 @@ class GameScene {
             }
         }
 
-
-
+        //create text
         Text text;
+        //create RNG
         Random random = new Random();
         boolean putTwo = true;
-        if (random.nextInt() % 2 == 0)
+        if (random.nextInt() % 2 == 0) //gets random number and if its even then changes putTwo to False
             putTwo = false;
+        //selecting a random cell with 0
         int xCell, yCell;
             xCell = random.nextInt(aForBound+1);
             yCell = random.nextInt(bForBound+1);
-        if (putTwo) {
+            //inputting 2 as new number
+        if (putTwo)
+        {
             text = textMaker.madeText("2", emptyCells[xCell][yCell].getX(), emptyCells[xCell][yCell].getY(), root);
             emptyCells[xCell][yCell].setTextClass(text);
             root.getChildren().add(text);
             emptyCells[xCell][yCell].setColorByNumber(2);
-        } else {
+        }
+        else // putting 4 as new number
+        {
             text = textMaker.madeText("4", emptyCells[xCell][yCell].getX(), emptyCells[xCell][yCell].getY(), root);
             emptyCells[xCell][yCell].setTextClass(text);
             root.getChildren().add(text);
@@ -79,6 +104,7 @@ class GameScene {
         }
     }
 
+    //traverse the cells to search for 0,2048
     private int  haveEmptyCell() {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
@@ -90,6 +116,7 @@ class GameScene {
         }
         return -1;
     }
+
 
     private int passDestination(int i, int j, char direct) {
         int coordinate = j;
@@ -144,6 +171,7 @@ class GameScene {
         return -1;
     }
 
+    //moving the cells
     private void moveLeft() {
         for (int i = 0; i < n; i++) {
             for (int j = 1; j < n; j++) {
@@ -227,16 +255,20 @@ class GameScene {
         }
     }
 
+    //compares value of cells below and to the right and checks if equal
     private boolean haveSameNumberNearly(int i, int j) {
         if (i < n - 1 && j < n - 1) {
+            //check if right cell equal
             if (cells[i + 1][j].getNumber() == cells[i][j].getNumber())
                 return true;
+            //check if bottom cell equal
             if (cells[i][j + 1].getNumber() == cells[i][j].getNumber())
                 return true;
         }
         return false;
     }
 
+    //check if cells below and right are equal if yes, then return false
     private boolean canNotMove() {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
@@ -248,6 +280,7 @@ class GameScene {
         return true;
     }
 
+    //function to calculate score
     private void sumCellNumbersToScore() {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
@@ -258,6 +291,8 @@ class GameScene {
 
     void game(Scene gameScene, Group root, Stage primaryStage, Scene endGameScene, Group endGameRoot) {
         this.root = root;
+
+        //drawing the cells
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 cells[i][j] = new Cell((j) * LENGTH + (j + 1) * distanceBetweenCells,

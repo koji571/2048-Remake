@@ -18,6 +18,7 @@ class TextMaker {
         return singleInstance;
     }
 
+    //placing text in cell
     Text madeText(String input, double xCell, double yCell, Group root) {
         double length = GameScene.getLENGTH();
         double fontSize = (3 * length) / 7.0;
@@ -29,6 +30,7 @@ class TextMaker {
         return text;
     }
 
+    //text when combing two cells together
     static void changeTwoText(Text first, Text second) {
         String temp;
         temp = first.getText();
