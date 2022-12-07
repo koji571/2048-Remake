@@ -301,6 +301,7 @@ class GameScene {
 
         }
 
+        //setting up score text
         Text text = new Text();
         root.getChildren().add(text);
         text.setText("SCORE :");
@@ -312,24 +313,35 @@ class GameScene {
         scoreText.setFont(Font.font(20));
         scoreText.setText("0");
 
+        //fill two random numbers
         randomFillNumber(1);
         randomFillNumber(1);
 
+        //scanning for button presses
         gameScene.addEventHandler(KeyEvent.KEY_PRESSED, key ->{
                 Platform.runLater(() -> {
                     int haveEmptyCell;
+                    boolean val = false;
                     if (key.getCode() == KeyCode.DOWN) {
                         GameScene.this.moveDown();
+                        val = true;
                     } else if (key.getCode() == KeyCode.UP) {
                         GameScene.this.moveUp();
+                        val = true;
                     } else if (key.getCode() == KeyCode.LEFT) {
                         GameScene.this.moveLeft();
+                        val = true;
                     } else if (key.getCode() == KeyCode.RIGHT) {
                         GameScene.this.moveRight();
+                        val = true;
                     }
+
+                    //totalling scores together
                     GameScene.this.sumCellNumbersToScore();
                     scoreText.setText(score + "");
+
                     haveEmptyCell = GameScene.this.haveEmptyCell();
+
                     if (haveEmptyCell == -1) {
                         if (GameScene.this.canNotMove()) {
                             primaryStage.setScene(endGameScene);
@@ -338,8 +350,8 @@ class GameScene {
                             root.getChildren().clear();
                             score = 0;
                         }
-                    } else if(haveEmptyCell == 1)
-                        GameScene.this.randomFillNumber(2);
+                    } else if((haveEmptyCell == 1 && val)) { //spawning if moved
+                        GameScene.this.randomFillNumber(2); }
                 });
             });
     }
