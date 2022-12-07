@@ -336,10 +336,6 @@ class GameScene {
                         val = true;
                     }
 
-                    //totalling scores together
-                    GameScene.this.sumCellNumbersToScore();
-                    scoreText.setText(score + "");
-
                     haveEmptyCell = GameScene.this.haveEmptyCell();
 
                     if (haveEmptyCell == -1) {
@@ -351,7 +347,11 @@ class GameScene {
                             score = 0;
                         }
                     } else if((haveEmptyCell == 1 && val)) { //spawning if moved
-                        GameScene.this.randomFillNumber(2); }
+                        GameScene.this.randomFillNumber(2);
+                        //totaling scores up
+                        GameScene.this.sumCellNumbersToScore();
+                        scoreText.setText(score + "");
+                    }
                 });
             });
     }
