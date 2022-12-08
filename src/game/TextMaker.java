@@ -1,4 +1,4 @@
-package com.example.demo;
+package game;
 
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
@@ -6,8 +6,10 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 class TextMaker {
+    //giving no value to single Instance
     private static TextMaker singleInstance = null;
 
+    //default constructor
     private TextMaker() {
 
     }
@@ -18,7 +20,7 @@ class TextMaker {
         return singleInstance;
     }
 
-    //placing text in cell
+    //placing white text in cell in scene
     Text madeText(String input, double xCell, double yCell, Group root) {
         double length = GameScene.getLENGTH();
         double fontSize = (3 * length) / 7.0;
@@ -30,13 +32,15 @@ class TextMaker {
         return text;
     }
 
-    //text when combing two cells together
+    //swap text/two numbers
     static void changeTwoText(Text first, Text second) {
+        //swapping the string in the first text with second
         String temp;
         temp = first.getText();
         first.setText(second.getText());
         second.setText(temp);
 
+        //changing the coordinates of second text with first text
         double tempNumber;
         tempNumber = first.getX();
         first.setX(second.getX());

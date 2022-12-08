@@ -1,4 +1,4 @@
-package com.example.demo;
+package game;
 
 import javafx.application.Platform;
 import javafx.scene.Group;
@@ -30,7 +30,6 @@ class GameScene {
 
     //cell data for score values
     private Cell[][] cells = new Cell[n][n];
-
 
     private Group root;
 
@@ -229,7 +228,7 @@ class GameScene {
     }
 
     private void moveHorizontally(int i, int j, int des, int sign) {
-        if (isValidDesH(i, j, des, sign)) {
+        if (isValidDesH(i, j, des, sign)){ //if true
             cells[i][j].adder(cells[i][des + sign]);
             cells[i][des].setModify(true);
         } else if (des != j) {

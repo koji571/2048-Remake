@@ -1,4 +1,4 @@
-package com.example.demo;
+package game;
 
 import javafx.event.EventHandler;
 import javafx.scene.Group;

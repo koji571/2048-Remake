@@ -1,4 +1,4 @@
-package com.example.demo;
+package game;
 
 //controller class
 public class Controller {

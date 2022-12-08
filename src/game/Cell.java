@@ -1,4 +1,4 @@
-package com.example.demo;
+package game;
 
 
 import javafx.scene.Group;
@@ -9,17 +9,20 @@ import javafx.scene.text.Text;
 public class Cell {
     private Rectangle rectangle;
     private Group root;
-    private Text textClass;
-    private boolean modify = false;
 
+    //creating an object of the class
+    private Text textClass;
+
+    //boolean modify
+    private boolean modify = false;
     void setModify(boolean modify) {
         this.modify = modify;
     }
-
     boolean getModify() {
         return modify;
     }
 
+    //default constructor of cell
     Cell(double x, double y, double scale, Group root) {
         //assigning class type rectangle
         rectangle = new Rectangle();
@@ -33,7 +36,7 @@ public class Cell {
         this.root = root;
         //set colour
         rectangle.setFill(Color.rgb(224, 226, 226, 0.5));
-        //assigning text to a rectangle cell
+        //creating text
         this.textClass = TextMaker.getSingleInstance().madeText("0", x, y, root);
         //adding the rectangle to the group
         root.getChildren().add(rectangle);
@@ -56,6 +59,7 @@ public class Cell {
         if (!textClass.getText().equals("0")) {
             root.getChildren().add(textClass);
         }
+        //setting the cell by number in cell
         setColorByNumber(getNumber());
         cell.setColorByNumber(cell.getNumber());
     }
