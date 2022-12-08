@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -67,8 +68,13 @@ public class Main extends Application {
         backgroundOfMenuForPlay.setY(180);
         accountRoot.getChildren().add(backgroundOfMenuForPlay);
         */
-
         try {
+
+            primaryStage.setTitle("2048");
+
+            Image image = new Image("logo.png");
+            primaryStage.getIcons().add(image);
+
             Parent root = FXMLLoader.load(getClass().getResource("/game/Menu.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
