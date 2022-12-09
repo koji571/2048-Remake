@@ -1,11 +1,14 @@
 package game;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 public class SceneController {
@@ -30,13 +33,23 @@ public class SceneController {
     Group endgameRoot = new Group();
     Scene endGameScene = new Scene(endgameRoot, WIDTH, HEIGHT, Color.rgb(250, 20, 100, 0.2));
 
+    @FXML
+    private ColorPicker myColorPicker;
+
+    Color bgcolor = Color.rgb(189, 177, 92);
+
+    public void changeColor(ActionEvent event){
+
+        Color myColor = myColorPicker.getValue();
+        bgcolor = myColor;
+    }
 
     public void switchToGame(ActionEvent event){
 
         primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Group gameRoot = new Group();
         setGameRoot(gameRoot);
-        Scene gameScene = new Scene(gameRoot, WIDTH, HEIGHT, Color.rgb(189, 177, 92));
+        Scene gameScene = new Scene(gameRoot, WIDTH, HEIGHT, bgcolor);
         setGameScene(gameScene);
         primaryStage.setScene(gameScene);
 
