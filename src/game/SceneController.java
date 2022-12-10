@@ -61,4 +61,13 @@ public class SceneController {
 
 
     }
+
+    public void HighScore(){
+        //High score screen
+    }
+
+    public void AccountCreate(){
+        //screen to create account
+    }
+
 }

@@ -36,6 +36,8 @@ class GameScene {
     //set base score
     private long score = 0;
 
+    private boolean move = false;
+
     static void setN(int number) {
         n = number;
         LENGTH = (HEIGHT - ((n + 1) * distanceBetweenCells)) / (double) n;
@@ -82,6 +84,7 @@ class GameScene {
         boolean putTwo = true;
         if (random.nextInt() % 2 == 0) //gets random number and if its even then changes putTwo to False
             putTwo = false;
+
         //selecting a random cell with 0
         int xCell, yCell;
             xCell = random.nextInt(aForBound+1);
@@ -228,12 +231,18 @@ class GameScene {
     }
 
     private void moveHorizontally(int i, int j, int des, int sign) {
-        if (isValidDesH(i, j, des, sign)){ //if true
+        if (isValidDesH(i, j, des, sign)){ //if true adding
             cells[i][j].adder(cells[i][des + sign]);
-            cells[i][des].setModify(true);
-        } else if (des != j) {
+            cells[i][des + sign].setModify(true);
+            move = true;
+        } else if (des != j) {//just moving
             cells[i][j].changeCell(cells[i][des]);
+            if(cells[i][des].getNumber() != 0)
+            {
+                move = true;
+            }
         }
+
     }
 
     private boolean isValidDesV(int i, int j, int des, int sign) {
@@ -248,9 +257,13 @@ class GameScene {
     private void moveVertically(int i, int j, int des, int sign) {
         if (isValidDesV(i, j, des, sign)) {
             cells[i][j].adder(cells[des + sign][j]);
-            cells[des][j].setModify(true);
+            cells[des + sign][j].setModify(true);
+            move = true;
         } else if (des != i) {
             cells[i][j].changeCell(cells[des][j]);
+            if(cells[des][j].getNumber() != 0){
+                move = true;
+            }
         }
     }
 
@@ -291,7 +304,7 @@ class GameScene {
     void game(Scene gameScene, Group root, Stage primaryStage, Scene endGameScene, Group endGameRoot) {
         this.root = root;
 
-        //drawing the cells
+        //assigning values to the cells
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 cells[i][j] = new Cell((j) * LENGTH + (j + 1) * distanceBetweenCells,
@@ -337,7 +350,8 @@ class GameScene {
 
                     haveEmptyCell = GameScene.this.haveEmptyCell();
 
-                    if (haveEmptyCell == -1) {
+                    //end game condition
+                    if (haveEmptyCell == -1) {//if neither 0 or 2048 on board and cannot move, game ends
                         if (GameScene.this.canNotMove()) {
                             primaryStage.setScene(endGameScene);
 
@@ -345,12 +359,15 @@ class GameScene {
                             root.getChildren().clear();
                             score = 0;
                         }
-                    } else if((haveEmptyCell == 1 && val)) { //spawning if moved
+                    } else if((haveEmptyCell == 1 && val && move )) { //spawning new cell on the board if 0 and button pressed
                         GameScene.this.randomFillNumber(2);
                         //totaling scores up
                         GameScene.this.sumCellNumbersToScore();
                         scoreText.setText(score + "");
+                    } else if (haveEmptyCell == 0) {
+                        //need to implement win screen
                     }
+                    move = false;
                 });
             });
     }
