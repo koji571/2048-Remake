@@ -38,10 +38,13 @@ This class is used as a controller class for the implemented Menu.fxml
 ## List of modified Java classes
 
 1. Main  
- This class was edited so that the program will boot the Menu.fxml file to start the game instead of running straight into the game.  
-
+ This class was edited so that the program will boot the Menu.fxml file to start the game instead of running straight into the game.
 
 2. GameScene  
 i. Modified the game function to include a condition when a valid key is pressed, i.e.(Arrow UP,DOWN,LEFT,RIGHT).   
 ii. Added boolean variable to check if the direction to be moved is valid and will spawn a random object.  
 iii. Added boolean variable to prevent more than two cells to combine.
+iv. Score now adds up within moveHorizontally and moveVertically
+
+3. EndGame  
+i. Allowed the stage to close when user wants to quit the program.

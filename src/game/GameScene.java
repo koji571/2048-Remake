@@ -351,7 +351,7 @@ class GameScene {
                     haveEmptyCell = GameScene.this.haveEmptyCell();
 
                     //end game condition
-                    if (haveEmptyCell == -1) {//if neither 0 or 2048 on board and cannot move, game ends
+                    if (haveEmptyCell == -1) {//if neither 0 nor 2048 on board and cannot move, game ends
                         if (GameScene.this.canNotMove()) {
                             primaryStage.setScene(endGameScene);
 
