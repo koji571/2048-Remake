@@ -235,6 +235,8 @@ class GameScene {
             cells[i][j].adder(cells[i][des + sign]);
             cells[i][des + sign].setModify(true);
             move = true;
+            score += cells[i][des+sign].getNumber();
+
         } else if (des != j) {//just moving
             cells[i][j].changeCell(cells[i][des]);
             if(cells[i][des].getNumber() != 0)
@@ -259,6 +261,7 @@ class GameScene {
             cells[i][j].adder(cells[des + sign][j]);
             cells[des + sign][j].setModify(true);
             move = true;
+            score += cells[des+sign][j].getNumber();
         } else if (des != i) {
             cells[i][j].changeCell(cells[des][j]);
             if(cells[des][j].getNumber() != 0){
@@ -292,6 +295,7 @@ class GameScene {
         return true;
     }
 
+    /*
     //function to calculate score
     private void sumCellNumbersToScore() {
         for (int i = 0; i < n; i++) {
@@ -299,7 +303,7 @@ class GameScene {
                 score += cells[i][j].getNumber();
             }
         }
-    }
+    }*/
 
     void game(Scene gameScene, Group root, Stage primaryStage, Scene endGameScene, Group endGameRoot) {
         this.root = root;
@@ -362,7 +366,7 @@ class GameScene {
                     } else if((haveEmptyCell == 1 && val && move )) { //spawning new cell on the board if 0 and button pressed
                         GameScene.this.randomFillNumber(2);
                         //totaling scores up
-                        GameScene.this.sumCellNumbersToScore();
+                        //GameScene.this.sumCellNumbersToScore();
                         scoreText.setText(score + "");
                     } else if (haveEmptyCell == 0) {
                         //need to implement win screen
