@@ -33,6 +33,10 @@ public class SceneController {
     Group endgameRoot = new Group();
     Scene endGameScene = new Scene(endgameRoot, WIDTH, HEIGHT, Color.rgb(250, 20, 100, 0.2));
 
+    Group winGameRoot = new Group();
+    Scene winGameScene = new Scene(winGameRoot, WIDTH, HEIGHT, Color.rgb(250, 20, 100, 0.2));
+
+
     @FXML
     private ColorPicker myColorPicker;
 
@@ -54,7 +58,7 @@ public class SceneController {
         primaryStage.setScene(gameScene);
 
         GameScene game = new GameScene();
-        game.game(gameScene, gameRoot, primaryStage, endGameScene, endgameRoot);
+        game.game(gameScene, gameRoot, primaryStage, endGameScene, endgameRoot, winGameScene, winGameRoot);
 
         //show stage
         primaryStage.show();

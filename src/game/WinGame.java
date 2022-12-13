@@ -17,18 +17,18 @@ import javafx.stage.Stage;
 import java.util.Optional;
 
 
-public class EndGame extends SceneController {
-    private static EndGame singleInstance = null;
-    private EndGame(){
+public class WinGame extends SceneController {
+    private static WinGame singleInstance = null;
+    private WinGame(){
 
     }
-    public static EndGame getInstance(){
+    public static WinGame getInstance(){
         if(singleInstance == null)
-            singleInstance= new EndGame();
+            singleInstance= new WinGame();
         return singleInstance;
     }
 
-    public void endGameShow(Scene endGameScene, Group root, Stage primaryStage,long score){
+    public void winGameShow(Scene winGameScene, Group root, Stage primaryStage,long score){
         Text text = new Text("GAME OVER");
         text.relocate(250,250);
         text.setFont(Font.font(80));

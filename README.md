@@ -29,7 +29,6 @@ yet to be created
 2. Ability to undo a move.
 3. Setting the grid number.
 4. Account creation + High Score tracker.
-5. Option to retry the game.
 
 ## List of new Java classes
 1. SceneController  
@@ -48,3 +47,4 @@ iv. Score now adds up within moveHorizontally and moveVertically
 
 3. EndGame  
 i. Allowed the stage to close when user wants to quit the program.
+ii. Added a retry button to enable user to retry the game when they fail.

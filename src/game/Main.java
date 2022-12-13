@@ -9,24 +9,6 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-/*
-    static final int WIDTH = 900;
-    static final int HEIGHT = 900;
-    //default constructor
-    private Group gameRoot = new Group();
-    private Scene gameScene = new Scene(gameRoot, WIDTH, HEIGHT, Color.rgb(189, 177, 92));
-
-
-    //private static Scanner input= new Scanner(System.in);
-
-    public void setGameScene(Scene gameScene) {
-        this.gameScene = gameScene;
-    }
-
-    public void setGameRoot(Group gameRoot) {
-        this.gameRoot = gameRoot;
-    }
-    */
 
     //setup for scene
     @Override
@@ -81,20 +63,7 @@ public class Main extends Application {
             e.printStackTrace();
         }
 
-/*
-        //background for main game stage
-        Group gameRoot = new Group();
-        setGameRoot(gameRoot);
-        Scene gameScene = new Scene(gameRoot, WIDTH, HEIGHT, Color.rgb(189, 177, 92));
-        setGameScene(gameScene);
-        primaryStage.setScene(gameScene);
 
-        //GameScene game = new GameScene();
-        //game.game(gameScene, gameRoot, primaryStage, endGameScene, endgameRoot);
-
-        //show stage
-        primaryStage.show();
-*/
     }
 
     //launch constructor

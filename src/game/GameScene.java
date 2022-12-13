@@ -295,17 +295,7 @@ class GameScene {
         return true;
     }
 
-    /*
-    //function to calculate score
-    private void sumCellNumbersToScore() {
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                score += cells[i][j].getNumber();
-            }
-        }
-    }*/
-
-    void game(Scene gameScene, Group root, Stage primaryStage, Scene endGameScene, Group endGameRoot) {
+    void game(Scene gameScene, Group root, Stage primaryStage, Scene endGameScene, Group endGameRoot, Scene winGameScene, Group winGameRoot) {
         this.root = root;
 
         //assigning values to the cells
@@ -365,11 +355,13 @@ class GameScene {
                         }
                     } else if((haveEmptyCell == 1 && val && move )) { //spawning new cell on the board if 0 and button pressed
                         GameScene.this.randomFillNumber(2);
-                        //totaling scores up
-                        //GameScene.this.sumCellNumbersToScore();
                         scoreText.setText(score + "");
                     } else if (haveEmptyCell == 0) {
-                        //need to implement win screen
+
+                        //primaryStage.setScene(winGameScene);
+                        //WinGame.getInstance().winGameShow(winGameScene, winGameRoot, primaryStage, score);
+                        //root.getChildren().clear();
+                        //score = 0;
                     }
                     move = false;
                 });
