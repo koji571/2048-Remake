@@ -22,10 +22,10 @@ class GameScene {
     //distance between cells
     private final static int distanceBetweenCells = 10;
 
-    //unknown
+
     private static double LENGTH = (HEIGHT - ((n + 1) * distanceBetweenCells)) / (double) n;
 
-    //unknown
+
     private TextMaker textMaker = TextMaker.getSingleInstance();
 
     //cell data for score values
@@ -106,14 +106,19 @@ class GameScene {
         }
     }
 
-    //traverse the cells to search for 0,2048
+    //traverse the cells to search for 2048 then 0
     private int  haveEmptyCell() {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if(cells[i][j].getNumber() == 2048)
+                    return 0;
+            }
+        }
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 if (cells[i][j].getNumber() == 0)
                     return 1;
-                if(cells[i][j].getNumber() == 2048)
-                    return 0;
+
             }
         }
         return -1;
@@ -345,23 +350,23 @@ class GameScene {
                     haveEmptyCell = GameScene.this.haveEmptyCell();
 
                     //end game condition
-                    if (haveEmptyCell == -1) {//if neither 0 nor 2048 on board and cannot move, game ends
-                        if (GameScene.this.canNotMove()) {
+                    if (haveEmptyCell == -1 || haveEmptyCell == 0 ) {//if neither 0 nor 2048 on board and cannot move, game ends
+                        if (GameScene.this.canNotMove()) { // if the tiles are unable to move
                             primaryStage.setScene(endGameScene);
 
-                            EndGame.getInstance().endGameShow(endGameScene, endGameRoot, primaryStage, score);
+                            EndGame.getInstance().endGameShow(endGameScene, endGameRoot, primaryStage, score, haveEmptyCell);
+                            root.getChildren().clear();
+                            score = 0;
+                        }else{//if there is a 2048
+                            primaryStage.setScene(endGameScene);
+
+                            EndGame.getInstance().endGameShow(endGameScene, endGameRoot, primaryStage, score, haveEmptyCell);
                             root.getChildren().clear();
                             score = 0;
                         }
                     } else if((haveEmptyCell == 1 && val && move )) { //spawning new cell on the board if 0 and button pressed
                         GameScene.this.randomFillNumber(2);
                         scoreText.setText(score + "");
-                    } else if (haveEmptyCell == 0) {
-
-                        //primaryStage.setScene(winGameScene);
-                        //WinGame.getInstance().winGameShow(winGameScene, winGameRoot, primaryStage, score);
-                        //root.getChildren().clear();
-                        //score = 0;
                     }
                     move = false;
                 });

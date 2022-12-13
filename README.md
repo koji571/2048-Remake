@@ -25,10 +25,9 @@ yet to be created
 ## List of Features implemented and not working
 
 ## List of features that were not implemented
-1. Win criteria, where the user achieves 2048 and wins the game.
-2. Ability to undo a move.
-3. Setting the grid number.
-4. Account creation + High Score tracker.
+1. Ability to undo a move.
+2. Setting the grid number.
+3. Account creation + High Score tracker.
 
 ## List of new Java classes
 1. SceneController  
@@ -43,8 +42,11 @@ This class is used as a controller class for the implemented Menu.fxml
 i. Modified the game function to include a condition when a valid key is pressed, i.e.(Arrow UP,DOWN,LEFT,RIGHT).   
 ii. Added boolean variable to check if the direction to be moved is valid and will spawn a random object.  
 iii. Added boolean variable to prevent more than two cells to combine.
-iv. Score now adds up within moveHorizontally and moveVertically
+iv. Score now adds up within moveHorizontally and moveVertically  
+v. Modified hasEmptyCell method to search for a 2048 tile then 0 tile 
 
 3. EndGame  
-i. Allowed the stage to close when user wants to quit the program.
-ii. Added a retry button to enable user to retry the game when they fail.
+i. Allowed the stage to close when user wants to quit the program.  
+ii. Added a retry button to enable user to retry the game reaches this scene.  
+iii. Added condition if player wins the game a congratulatory messages appears.
+iv. Added text to tell user their final score.

@@ -28,16 +28,23 @@ public class EndGame extends SceneController {
         return singleInstance;
     }
 
-    public void endGameShow(Scene endGameScene, Group root, Stage primaryStage,long score){
-        Text text = new Text("GAME OVER");
-        text.relocate(250,250);
-        text.setFont(Font.font(80));
-        root.getChildren().add(text);
+    public void endGameShow(Scene endGameScene, Group root, Stage primaryStage,long score, int haveEmptyCell){
 
+        if(haveEmptyCell == -1) {
+            Text text = new Text("GAME OVER");
+            text.relocate(200, 200);
+            text.setFont(Font.font(80));
+            root.getChildren().add(text);
+        } else if (haveEmptyCell == 0) {
+            Text text = new Text("Congratulations!\n YOU WIN ");
+            text.relocate(200, 200);
+            text.setFont(Font.font(80));
+            root.getChildren().add(text);
+        }
 
-        Text scoreText = new Text(score+"");
+        Text scoreText = new Text("Final Score:\n"+score+"");
         scoreText.setFill(Color.BLACK);
-        scoreText.relocate(250,600);
+        scoreText.relocate(200,500);
         scoreText.setFont(Font.font(80));
         root.getChildren().add(scoreText);
 

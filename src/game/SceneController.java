@@ -40,16 +40,20 @@ public class SceneController {
     @FXML
     private ColorPicker myColorPicker;
 
+    //setting default bgcolour
     Color bgcolor = Color.rgb(189, 177, 92);
 
+    //method to change the bgcolor
     public void changeColor(ActionEvent event){
 
         Color myColor = myColorPicker.getValue();
         bgcolor = myColor;
     }
 
+    //method to switch to the main game
     public void switchToGame(ActionEvent event){
 
+        //setting the stage
         primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Group gameRoot = new Group();
         setGameRoot(gameRoot);
