@@ -38,7 +38,9 @@ This class is used as a controller class for the implemented Menu.fxml
 1. Main  
  This class was edited so that the program will boot the Menu.fxml file to start the game instead of running straight into the game.
 
-2. GameScene  
+2. GameScene   
+i. Original game Logic and Data was moved to seperate classes to improve encapsulation  
+Mofications to the original game functions are:-  
 i. Modified the game function to include a condition when a valid key is pressed, i.e.(Arrow UP,DOWN,LEFT,RIGHT).   
 ii. Added boolean variable to check if the direction to be moved is valid and will spawn a random object.  
 iii. Added boolean variable to prevent more than two cells to combine.

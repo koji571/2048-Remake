@@ -1,5 +1,6 @@
 package game.scenes;
 
+
 import game.controller.SceneController;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -29,6 +30,7 @@ public class EndGame extends SceneController {
 
     public void endGameShow(Scene endGameScene, Group root, Stage primaryStage,long score, int haveEmptyCell){
 
+        //determining message to display
         if(haveEmptyCell == -1) {
             Text text = new Text("GAME OVER");
             text.relocate(200, 200);
@@ -41,25 +43,28 @@ public class EndGame extends SceneController {
             root.getChildren().add(text);
         }
 
+        //displaying score text
         Text scoreText = new Text("Final Score:\n"+score+"");
         scoreText.setFill(Color.BLACK);
         scoreText.relocate(200,500);
         scoreText.setFont(Font.font(80));
         root.getChildren().add(scoreText);
 
+        //displaying quit button
         Button quitButton = new Button("QUIT");
         quitButton.setPrefSize(100,30);
         quitButton.setTextFill(Color.BLACK);
         root.getChildren().add(quitButton);
         quitButton.relocate(100,800);
 
+        //displaying retry button
         Button retryButton = new Button("RETRY");
         retryButton.setPrefSize(100,30);
         retryButton.setTextFill(Color.BLACK);
         root.getChildren().add(retryButton);
         retryButton.relocate(700,800);
 
-
+        //eventHandler if quit is selected
         quitButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -76,6 +81,7 @@ public class EndGame extends SceneController {
             }
         });
 
+        //eventHandler if Retry button is clicked
         retryButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
