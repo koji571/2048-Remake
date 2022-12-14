@@ -5,6 +5,7 @@ import game.cell.Logic;
 import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Font;
@@ -31,6 +32,8 @@ import javafx.stage.Stage;
         text.setText("SCORE :");
         text.setFont(Font.font(30));
         text.relocate(750, 100);
+
+        //setting up display for score
         Text scoreText = new Text();
         root.getChildren().add(scoreText);
         scoreText.relocate(750, 150);

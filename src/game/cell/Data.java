@@ -6,7 +6,7 @@ public class Data {
     //number of cells horizontally, vertically
     protected static int n = 4;
 
-    //cell data for score values
+    //creating an object of class cell to store cell data
     protected Cell[][] cells = new Cell[n][n];
 
     //setter method for n

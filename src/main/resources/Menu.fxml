@@ -35,6 +35,6 @@
          </font>
       </Text>
       <ComboBox fx:id="myComboBox" layoutX="365.0" layoutY="256.0" onAction="#changeGrid" prefWidth="150.0" promptText="4" />
-      <CheckBox layoutX="397.0" layoutY="200.0" mnemonicParsing="false" onAction="#enableHard" text="Hard Mode" />
+      <CheckBox fx:id="myCheckBox" layoutX="397.0" layoutY="200.0" mnemonicParsing="false" onAction="#enableHard" text="Hard Mode" />
    </children>
 </AnchorPane>

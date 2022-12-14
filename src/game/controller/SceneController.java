@@ -41,6 +41,8 @@ public class SceneController extends Data implements Initializable {
 
     @FXML
     private ComboBox<Integer> myComboBox;
+    @FXML
+    public CheckBox myCheckBox;
 
     //setting default bgcolour
     public Color bgcolor = Color.rgb(189, 177, 92);
@@ -54,7 +56,13 @@ public class SceneController extends Data implements Initializable {
 
     //allow user to change the grid size
     public void enableHard(ActionEvent event) {
-        myComboBox.setDisable(false);
+
+        if (myCheckBox.isSelected()){
+            myComboBox.setDisable(false);
+        }else{
+            myComboBox.setDisable(true);
+        }
+
     }
 
     //change the grid size
