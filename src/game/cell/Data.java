@@ -10,7 +10,7 @@ public class Data {
     protected Cell[][] cells = new Cell[n][n];
 
     //setter method for n
-    static void setN(int number) {
+    protected static void setN(int number) {
         n = number;
         LENGTH = (HEIGHT - ((n + 1) * distanceBetweenCells)) / (double) n;
     }

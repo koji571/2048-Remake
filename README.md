@@ -20,18 +20,23 @@ yet to be created
 
 ## List of Features implemented and working
 
-1. Implemented a start/menu screen suing FXML where the user can select the background colour of the game.
+1. Implemented a start/menu screen using FXML 
+2. Allowed user to select grid colour and enable hard mode to change grid size
+3. Allowed user to retry the game at the end
 
 ## List of Features implemented and not working
 
 ## List of features that were not implemented
 1. Ability to undo a move.
-2. Setting the grid number.
-3. Account creation + High Score tracker.
+2. Account creation + High Score tracker.
 
 ## List of new Java classes
 1. SceneController  
 This class is used as a controller class for the implemented Menu.fxml 
+2. Data  
+This class is used to store all the variables needed to be used by multiple classes.
+3. Logic  
+This class is sued to store all the game movement logic.
 
 ## List of modified Java classes
 
@@ -40,7 +45,7 @@ This class is used as a controller class for the implemented Menu.fxml
 
 2. GameScene   
 i. Original game Logic and Data was moved to seperate classes to improve encapsulation  
-Mofications to the original game functions are:-  
+Modification to the original game functions are:-  
 i. Modified the game function to include a condition when a valid key is pressed, i.e.(Arrow UP,DOWN,LEFT,RIGHT).   
 ii. Added boolean variable to check if the direction to be moved is valid and will spawn a random object.  
 iii. Added boolean variable to prevent more than two cells to combine.
