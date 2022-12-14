@@ -1,11 +1,11 @@
-package game;
+package game.account;
 
 import java.io.File;
 import java.io.IOException;
 
 public class AccountNew {
 
-        /*
+       /*
     //create file
     try {
         File obj = new File("Score.txt");

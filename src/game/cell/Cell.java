@@ -1,4 +1,4 @@
-package game;
+package game.cell;
 
 
 import javafx.scene.Group;
@@ -15,15 +15,15 @@ public class Cell {
 
     //boolean modify
     private boolean modify = false;
-    void setModify(boolean modify) {
+    public void setModify(boolean modify) {
         this.modify = modify;
     }
-    boolean getModify() {
+    public boolean getModify() {
         return modify;
     }
 
     //default constructor of cell
-    Cell(double x, double y, double scale, Group root) {
+    public Cell(double x, double y, double scale, Group root) {
         //assigning class type rectangle
         rectangle = new Rectangle();
         //setting position
@@ -43,12 +43,12 @@ public class Cell {
     }
 
     //setter method to assign text
-    void setTextClass(Text textClass) {
+    public void setTextClass(Text textClass) {
         this.textClass = textClass;
     }
 
 
-    void changeCell(Cell cell) {
+    public void changeCell(Cell cell) {
         TextMaker.changeTwoText(textClass, cell.getTextClass());
         root.getChildren().remove(cell.getTextClass());
         root.getChildren().remove(textClass);
@@ -65,7 +65,7 @@ public class Cell {
     }
 
     //function to add number to two cells together
-    void adder(Cell cell) {
+    public void adder(Cell cell) {
         cell.getTextClass().setText((cell.getNumber() + this.getNumber()) + "");
         textClass.setText("0");
         root.getChildren().remove(textClass);
@@ -74,7 +74,7 @@ public class Cell {
     }
 
     //set colour of cells
-    void setColorByNumber(int number) {
+    public void setColorByNumber(int number) {
         switch (number) {
             case 0:
                 rectangle.setFill(Color.rgb(224, 226, 226, 0.5));
@@ -117,15 +117,15 @@ public class Cell {
 
     }
 
-    double getX() {
+    public double getX() {
         return rectangle.getX();
     }
 
-    double getY() {
+    public double getY() {
         return rectangle.getY();
     }
 
-    int getNumber() {
+    public int getNumber() {
         return Integer.parseInt(textClass.getText());
     }
 

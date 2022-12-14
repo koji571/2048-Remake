@@ -1,5 +1,7 @@
-package game;
+package game.scenes;
 
+import game.cell.Cell;
+import game.cell.TextMaker;
 import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -11,7 +13,7 @@ import javafx.stage.Stage;
 
 import java.util.Random;
 
-class GameScene {
+ public class GameScene {
 
     //dimension of all the cells
     private static int HEIGHT = 700;
@@ -44,7 +46,7 @@ class GameScene {
     }
 
     //getter method for length
-    static double getLENGTH() {
+    public static double getLENGTH() {
         return LENGTH;
     }
 
@@ -300,7 +302,7 @@ class GameScene {
         return true;
     }
 
-    void game(Scene gameScene, Group root, Stage primaryStage, Scene endGameScene, Group endGameRoot, Scene winGameScene, Group winGameRoot) {
+    public void game(Scene gameScene, Group root, Stage primaryStage, Scene endGameScene, Group endGameRoot, Scene winGameScene, Group winGameRoot) {
         this.root = root;
 
         //assigning values to the cells

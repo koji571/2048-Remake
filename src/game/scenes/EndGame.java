@@ -1,9 +1,8 @@
-package game;
+package game.scenes;
 
-import javafx.event.ActionEvent;
+import game.controller.SceneController;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
