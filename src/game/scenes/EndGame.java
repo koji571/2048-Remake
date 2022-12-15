@@ -1,7 +1,7 @@
 package game.scenes;
 
 
-import game.controller.MenuController;
+import game.controller.Controller;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 import java.util.Optional;
 
 
-public class EndGame extends MenuController {
+public class EndGame extends Controller {
     private static EndGame singleInstance = null;
     private EndGame(){
 
@@ -30,7 +30,8 @@ public class EndGame extends MenuController {
 
     public void endGameShow(Scene endGameScene, Group root, Stage primaryStage,long score, int haveEmptyCell) {
         
-        scoreclass.readFile();
+        long oldHigh = scoreclass.readFile();
+        long newHigh = scoreclass.compareScore(score, oldHigh);
 
         //determining message to display
         if (haveEmptyCell == -1) {
@@ -53,7 +54,7 @@ public class EndGame extends MenuController {
         root.getChildren().add(scoreText);
 
         //displaying highscore text
-        Text highText = new Text("High Score:\n" + scoreclass.compareScore(score, newdata) + "");
+        Text highText = new Text("High Score:\n" + newHigh + "");
         highText.setFill(Color.BLACK);
         highText.relocate(100, 600);
         highText.setFont(Font.font(50));

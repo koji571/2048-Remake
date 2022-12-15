@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #BDB15C;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.controller.MenuController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #BDB15C;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.controller.Controller">
    <children>
       <Button layoutX="273.0" layoutY="338.0" mnemonicParsing="false" onAction="#switchToGame" text="START" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="226.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">

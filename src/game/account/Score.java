@@ -30,7 +30,7 @@ public class Score extends Data {
     }
 
     //method to read score file
-    public void readFile(){
+    public long readFile(){
         //reading score file
 
         try {
@@ -40,13 +40,13 @@ public class Score extends Data {
             while (scanner.hasNextLine()) {
                 String data = scanner.nextLine();
                 newdata = Long.parseLong(data);
-                System.out.println(newdata);
             }
             scanner.close();
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred");
             e.printStackTrace();
         }
+        return newdata;
     }
 
     //method to compare new score with previous highscore

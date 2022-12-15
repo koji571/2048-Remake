@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public abstract class MenuController extends Data implements Initializable {
+public class Controller extends Data implements Initializable {
 
     protected static final int WIDTH = 900;
     protected static final int HEIGHT = 900;
