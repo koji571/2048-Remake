@@ -5,7 +5,7 @@ import javafx.scene.Group;
 
 import java.io.File;
 
-public class Data {
+public abstract class Data {
     //default number of cells horizontally, vertically
     protected static int n = 4;
 

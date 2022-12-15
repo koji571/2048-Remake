@@ -3,7 +3,7 @@ package game.cell;
 import javafx.scene.text.Text;
 import java.util.Random;
 
-public class Logic extends Data {
+public abstract class Logic extends Data {
 
     //creating object for class TextMaker
     private TextMaker textMaker = TextMaker.getSingleInstance();
