@@ -1,7 +1,7 @@
 package game.scenes;
 
 
-import game.controller.SceneController;
+import game.controller.MenuController;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -14,14 +14,10 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.io.*;
 import java.util.Optional;
-import java.util.Scanner;
 
 
-
-
-public class EndGame extends SceneController {
+public class EndGame extends MenuController {
     private static EndGame singleInstance = null;
     private EndGame(){
 

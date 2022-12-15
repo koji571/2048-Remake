@@ -4,21 +4,32 @@ import game.cell.Data;
 import game.scenes.GameScene;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
+import javafx.stage.Modality;
+import javafx.stage.Popup;
+import javafx.stage.PopupWindow;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class SceneController extends Data implements Initializable {
+public class MenuController extends Data implements Initializable {
 
     protected static final int WIDTH = 900;
     protected static final int HEIGHT = 900;
+
 
     //default constructor
     private Group gameRoot = new Group();
@@ -42,9 +53,9 @@ public class SceneController extends Data implements Initializable {
     @FXML
     private ComboBox<Integer> myComboBox;
     @FXML
-    public CheckBox hardCheckBox;
+    private CheckBox hardCheckBox;
     @FXML
-    public CheckBox easyCheckBox;
+    private CheckBox easyCheckBox;
 
     //setting default bgcolour
     public Color bgcolor = Color.rgb(189, 177, 92);
@@ -63,6 +74,7 @@ public class SceneController extends Data implements Initializable {
             myComboBox.getItems().add(hardGrid);
         }else{
             myComboBox.getItems().removeAll(hardGrid);
+            setN(4);
         }
 
     }
@@ -73,12 +85,28 @@ public class SceneController extends Data implements Initializable {
             myComboBox.getItems().addAll(easyGrid);
         }else{
             myComboBox.getItems().removeAll(easyGrid);
+            setN(4);
         }
     }
 
     //change the grid size
     public void changeGrid(ActionEvent event) {
         setN(myComboBox.getValue());
+    }
+
+    //show the How To Play Stage
+    public void toggleHow() throws IOException {
+
+        FXMLLoader howtoload = new FXMLLoader((getClass().getResource("/HowTo.fxml")));
+        Parent root = howtoload.load();
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("How To Play!");
+        stage.setX(150);
+        stage.setY(400);
+        stage.show();
+
     }
 
     @Override
@@ -90,11 +118,6 @@ public class SceneController extends Data implements Initializable {
 
     //method to switch to the main game
     public void switchToGame(ActionEvent event) {
-
-        if(! easyCheckBox.isSelected() && hardCheckBox.isSelected()){
-            setN(4);
-        }
-
 
         //setting the stage
         primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -111,14 +134,6 @@ public class SceneController extends Data implements Initializable {
         primaryStage.show();
 
 
-    }
-
-    public void HighScore() {
-        //High score screen
-    }
-
-    public void AccountCreate() {
-        //screen to create account
     }
 
 

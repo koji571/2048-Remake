@@ -19,7 +19,7 @@ public class Main extends Application {
             primaryStage.setTitle("2048");
 
             //setting icon for application
-            Image image = new Image("logo.png");
+            Image image = new Image(String.valueOf(getClass().getResource("/logo.png")));
             primaryStage.getIcons().add(image);
 
             //launching Menu.fxml

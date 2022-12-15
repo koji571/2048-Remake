@@ -23,6 +23,7 @@ yet to be created.
 1. Implemented a start/menu screen using FXML .
 2. Allowed user to select grid colour and enable hard mode to change grid size.
 3. High Score Tracker.
+4. Implemented a How To Play window.
 
 ## List of Features implemented and not working  
 1. Allowed user to retry the game at the end but displays old EndScene GUI.
@@ -32,8 +33,8 @@ yet to be created.
 2. Account creation.
 
 ## List of new Java classes
-1. SceneController  
-This class is used as a controller class for the implemented Menu.fxml 
+1. MenuController  
+This class is used as a controller class for the implemented Menu.fxml
 2. Data  
 This class is used to store all the variables needed to be used by multiple classes.
 3. Logic  
