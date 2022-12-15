@@ -13,7 +13,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #BDB15C;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.controller.SceneController">
    <children>
-      <Button layoutX="301.0" layoutY="339.0" mnemonicParsing="false" onAction="#switchToGame" text="START" />
+      <Button layoutX="273.0" layoutY="338.0" mnemonicParsing="false" onAction="#switchToGame" text="START" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="226.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@logo.png" />
@@ -35,6 +35,9 @@
          </font>
       </Text>
       <ComboBox fx:id="myComboBox" layoutX="365.0" layoutY="256.0" onAction="#changeGrid" prefWidth="150.0" promptText="4" />
-      <CheckBox fx:id="myCheckBox" layoutX="397.0" layoutY="200.0" mnemonicParsing="false" onAction="#enableHard" text="Hard Mode" />
+      <CheckBox fx:id="hardCheckBox" layoutX="388.0" layoutY="176.0" mnemonicParsing="false" onAction="#enableHard" text="Hard Mode" />
+      <CheckBox fx:id="easyCheckBox" layoutX="388.0" layoutY="200.0" mnemonicParsing="false" onAction="#setEasy" text="Easy Mode" />
+      <Text layoutX="485.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SCORE X2" />
+      <Text layoutX="485.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SCORE X0.5" />
    </children>
 </AnchorPane>

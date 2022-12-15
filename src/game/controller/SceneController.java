@@ -19,6 +19,7 @@ public class SceneController extends Data implements Initializable {
 
     protected static final int WIDTH = 900;
     protected static final int HEIGHT = 900;
+
     //default constructor
     private Group gameRoot = new Group();
     private Scene gameScene = new Scene(gameRoot, WIDTH, HEIGHT, Color.rgb(189, 177, 92));
@@ -38,11 +39,12 @@ public class SceneController extends Data implements Initializable {
     public Scene winGameScene = new Scene(winGameRoot, WIDTH, HEIGHT, Color.rgb(250, 20, 100, 0.2));
     @FXML
     private ColorPicker myColorPicker;
-
     @FXML
     private ComboBox<Integer> myComboBox;
     @FXML
-    public CheckBox myCheckBox;
+    public CheckBox hardCheckBox;
+    @FXML
+    public CheckBox easyCheckBox;
 
     //setting default bgcolour
     public Color bgcolor = Color.rgb(189, 177, 92);
@@ -54,15 +56,24 @@ public class SceneController extends Data implements Initializable {
         bgcolor = myColor;
     }
 
-    //allow user to change the grid size
+    //allow user to change the grid size to 3
     public void enableHard(ActionEvent event) {
-
-        if (myCheckBox.isSelected()){
-            myComboBox.setDisable(false);
+        Integer hardGrid = 3;
+        if (hardCheckBox.isSelected()){
+            myComboBox.getItems().add(hardGrid);
         }else{
-            myComboBox.setDisable(true);
+            myComboBox.getItems().removeAll(hardGrid);
         }
 
+    }
+    //allow user to change the grid size to 5,6
+    public void setEasy(ActionEvent event) {
+        Integer[] easyGrid = {5,6};
+        if (easyCheckBox.isSelected()){
+            myComboBox.getItems().addAll(easyGrid);
+        }else{
+            myComboBox.getItems().removeAll(easyGrid);
+        }
     }
 
     //change the grid size
@@ -73,14 +84,17 @@ public class SceneController extends Data implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //display sizes available
-        Integer[] gridsize = {4,5,6};
-        myComboBox.getItems().addAll(gridsize);
+        myComboBox.getItems().add(4);
         //disable the grid size selector on default
-        myComboBox.setDisable(true);
     }
 
     //method to switch to the main game
     public void switchToGame(ActionEvent event) {
+
+        if(! easyCheckBox.isSelected() && hardCheckBox.isSelected()){
+            setN(4);
+        }
+
 
         //setting the stage
         primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -106,5 +120,6 @@ public class SceneController extends Data implements Initializable {
     public void AccountCreate() {
         //screen to create account
     }
+
 
 }

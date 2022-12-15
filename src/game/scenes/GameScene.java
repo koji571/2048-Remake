@@ -65,18 +65,13 @@ import javafx.stage.Stage;
                     int haveEmptyCell = GameScene.this.haveEmptyCell();
 
                     //end game condition
-                    if (haveEmptyCell == -1 || haveEmptyCell == 0 ) {//if neither 0 nor 2048 on board and cannot move, game ends
-                        if (GameScene.this.canNotMove()) { // if the tiles are unable to move
+                    if (haveEmptyCell == -1 && canNotMove() || haveEmptyCell == 0 ) {//if neither 0 nor 2048 on board and cannot move, game ends
+
                             primaryStage.setScene(endGameScene);
 
                             EndGame.getInstance().endGameShow(endGameScene, endGameRoot, primaryStage, score, haveEmptyCell);
                             root.getChildren().clear();
-                        }else{//if there is a 2048
-                            primaryStage.setScene(endGameScene);
 
-                            EndGame.getInstance().endGameShow(endGameScene, endGameRoot, primaryStage, score, haveEmptyCell);
-                            root.getChildren().clear();
-                        }
                     } else if((haveEmptyCell == 1 && val && move )) { //spawning new cell on the board if 0 and button pressed
                         GameScene.this.randomFillNumber(2);
                         scoreText.setText(score + "");

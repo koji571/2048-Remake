@@ -133,8 +133,13 @@ public class Logic extends Data {
             cells[i][j].adder(cells[i][des + sign]);
             cells[i][des + sign].setModify(true);
             move = true;
-            score += cells[i][des+sign].getNumber();
-
+            if(n == 4){
+                score += cells[i][des+sign].getNumber();
+            } else if (n == 3) {
+                score += 2L * (cells[i][des+sign].getNumber());
+            } else if (n == 5 || n == 6) {
+                score += 0.5 * (cells[i][des+sign].getNumber());
+            }
         } else if (des != j) {//just moving
             cells[i][j].changeCell(cells[i][des]);
             if(cells[i][des].getNumber() != 0)
@@ -161,7 +166,13 @@ public class Logic extends Data {
             cells[i][j].adder(cells[des + sign][j]);
             cells[des + sign][j].setModify(true);
             move = true;
-            score += cells[des+sign][j].getNumber();
+            if(n == 4){
+                score += cells[des+sign][j].getNumber();
+            } else if (n == 3) {
+                score += 2L * (cells[des+sign][j].getNumber());
+            } else if (n == 5 || n == 6) {
+                score += 0.5 * (cells[des+sign][j].getNumber());
+            }
         } else if (des != i) {
             cells[i][j].changeCell(cells[des][j]);
             if(cells[des][j].getNumber() != 0){
