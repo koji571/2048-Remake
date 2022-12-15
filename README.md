@@ -16,19 +16,20 @@ Student ID: 20412776
 4. Compile and run the game!
 
 ## Javadoc Documentation
-yet to be created
+yet to be created.
 
 ## List of Features implemented and working
 
-1. Implemented a start/menu screen using FXML 
-2. Allowed user to select grid colour and enable hard mode to change grid size
-3. Allowed user to retry the game at the end
+1. Implemented a start/menu screen using FXML .
+2. Allowed user to select grid colour and enable hard mode to change grid size.
+3. High Score Tracker.
 
-## List of Features implemented and not working
+## List of Features implemented and not working  
+1. Allowed user to retry the game at the end but displays old EndScene GUI.
 
 ## List of features that were not implemented
 1. Ability to undo a move.
-2. Account creation + High Score tracker.
+2. Account creation.
 
 ## List of new Java classes
 1. SceneController  
@@ -36,7 +37,9 @@ This class is used as a controller class for the implemented Menu.fxml
 2. Data  
 This class is used to store all the variables needed to be used by multiple classes.
 3. Logic  
-This class is sued to store all the game movement logic.
+This class is used to store all the game movement logic.  
+4. Score  
+This class is used to keeep track of user's current high score.
 
 ## List of modified Java classes
 
@@ -56,4 +59,4 @@ v. Modified hasEmptyCell method to search for a 2048 tile then 0 tile
 i. Allowed the stage to close when user wants to quit the program.  
 ii. Added a retry button to enable user to retry the game reaches this scene.  
 iii. Added condition if player wins the game a congratulatory messages appears.
-iv. Added text to tell user their final score.
+iv. Added text to tell user their final score and high Score.

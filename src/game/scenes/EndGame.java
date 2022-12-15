@@ -14,7 +14,11 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.*;
 import java.util.Optional;
+import java.util.Scanner;
+
+
 
 
 public class EndGame extends SceneController {
@@ -28,41 +32,51 @@ public class EndGame extends SceneController {
         return singleInstance;
     }
 
-    public void endGameShow(Scene endGameScene, Group root, Stage primaryStage,long score, int haveEmptyCell){
+    public void endGameShow(Scene endGameScene, Group root, Stage primaryStage,long score, int haveEmptyCell) {
+        
+        scoreclass.readFile();
 
         //determining message to display
-        if(haveEmptyCell == -1) {
+        if (haveEmptyCell == -1) {
             Text text = new Text("GAME OVER");
-            text.relocate(200, 200);
-            text.setFont(Font.font(80));
+            text.relocate(100, 100);
+            text.setFont(Font.font(60));
             root.getChildren().add(text);
         } else if (haveEmptyCell == 0) {
             Text text = new Text("Congratulations!\n YOU WIN ");
-            text.relocate(200, 200);
-            text.setFont(Font.font(80));
+            text.relocate(100, 100);
+            text.setFont(Font.font(40));
             root.getChildren().add(text);
         }
 
         //displaying score text
-        Text scoreText = new Text("Final Score:\n"+score+"");
+        Text scoreText = new Text("Final Score:\n" + score + "");
         scoreText.setFill(Color.BLACK);
-        scoreText.relocate(200,500);
-        scoreText.setFont(Font.font(80));
+        scoreText.relocate(100, 500);
+        scoreText.setFont(Font.font(50));
         root.getChildren().add(scoreText);
+
+        //displaying highscore text
+        Text highText = new Text("High Score:\n" + scoreclass.compareScore(score, newdata) + "");
+        highText.setFill(Color.BLACK);
+        highText.relocate(100, 600);
+        highText.setFont(Font.font(50));
+        root.getChildren().add(highText);
+
 
         //displaying quit button
         Button quitButton = new Button("QUIT");
-        quitButton.setPrefSize(100,30);
+        quitButton.setPrefSize(100, 30);
         quitButton.setTextFill(Color.BLACK);
         root.getChildren().add(quitButton);
-        quitButton.relocate(100,800);
+        quitButton.relocate(100, 800);
 
         //displaying retry button
         Button retryButton = new Button("RETRY");
-        retryButton.setPrefSize(100,30);
+        retryButton.setPrefSize(100, 30);
         retryButton.setTextFill(Color.BLACK);
         root.getChildren().add(retryButton);
-        retryButton.relocate(700,800);
+        retryButton.relocate(700, 800);
 
         //eventHandler if quit is selected
         quitButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -74,7 +88,7 @@ public class EndGame extends SceneController {
                 alert.setContentText("Are you sure?");
 
                 Optional<ButtonType> result = alert.showAndWait();
-                if (result.get() == ButtonType.OK){
+                if (result.get() == ButtonType.OK) {
                     root.getChildren().clear();
                     primaryStage.close();
                 }
@@ -83,6 +97,7 @@ public class EndGame extends SceneController {
 
         //eventHandler if Retry button is clicked
         retryButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
             @Override
             public void handle(MouseEvent mouseEvent) {
                 Group gameRoot = new Group();
@@ -98,7 +113,6 @@ public class EndGame extends SceneController {
                 primaryStage.show();
             }
         });
-
 
 
     }

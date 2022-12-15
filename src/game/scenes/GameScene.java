@@ -5,7 +5,6 @@ import game.cell.Logic;
 import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Font;
@@ -47,7 +46,6 @@ import javafx.stage.Stage;
         //scanning for button presses
         gameScene.addEventHandler(KeyEvent.KEY_PRESSED, key ->{
                 Platform.runLater(() -> {
-                    int haveEmptyCell;
                     boolean val = false;
                     if (key.getCode() == KeyCode.DOWN) {
                         GameScene.this.moveDown();
@@ -64,7 +62,7 @@ import javafx.stage.Stage;
                     }
 
                     //running the haveEmptyCell method
-                    haveEmptyCell = GameScene.this.haveEmptyCell();
+                    int haveEmptyCell = GameScene.this.haveEmptyCell();
 
                     //end game condition
                     if (haveEmptyCell == -1 || haveEmptyCell == 0 ) {//if neither 0 nor 2048 on board and cannot move, game ends
@@ -73,13 +71,11 @@ import javafx.stage.Stage;
 
                             EndGame.getInstance().endGameShow(endGameScene, endGameRoot, primaryStage, score, haveEmptyCell);
                             root.getChildren().clear();
-                            score = 0;
                         }else{//if there is a 2048
                             primaryStage.setScene(endGameScene);
 
                             EndGame.getInstance().endGameShow(endGameScene, endGameRoot, primaryStage, score, haveEmptyCell);
                             root.getChildren().clear();
-                            score = 0;
                         }
                     } else if((haveEmptyCell == 1 && val && move )) { //spawning new cell on the board if 0 and button pressed
                         GameScene.this.randomFillNumber(2);

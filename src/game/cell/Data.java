@@ -1,13 +1,21 @@
 package game.cell;
 
+import game.account.Score;
 import javafx.scene.Group;
 
+import java.io.File;
+
 public class Data {
-    //number of cells horizontally, vertically
+    //default number of cells horizontally, vertically
     protected static int n = 4;
 
     //creating an object of class cell to store cell data
     protected Cell[][] cells = new Cell[n][n];
+    //initialise an object of class score to track highscore
+    public static Score scoreclass = new Score();
+
+    //object to point towards a score.txt file
+    protected File file = new File("score.txt");
 
     //setter method for n
     protected static void setN(int number) {
@@ -30,6 +38,9 @@ public class Data {
 
     //set base score
     protected long score = 0;
+
+    //new high score if any
+    protected long newdata = 0;
 
     //creating a Group
     protected Group root;

@@ -6,7 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-
+import static game.cell.Data.scoreclass;
 public class Main extends Application {
 
     //setup for scene
@@ -35,6 +35,9 @@ public class Main extends Application {
 
     //launch method
     public static void main(String[] args) {
+
+        scoreclass.checkFile();
+
         launch(args);
     }
 }
