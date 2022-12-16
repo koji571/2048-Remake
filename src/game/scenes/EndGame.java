@@ -16,18 +16,34 @@ import javafx.stage.Stage;
 
 import java.util.Optional;
 
-
+/**
+ *This class is used to instantiate an EndGame Scene
+ * @author  LeoHaiKen Tan -modified
+ */
 public class EndGame extends Controller {
     private static EndGame singleInstance = null;
     private EndGame(){
 
     }
+
+    /**
+     * Initialises a new instant of EndGame if it is null unless otherwise
+     * @return return a new instance of End Game if there is none otherwise returns previous
+     */
     public static EndGame getInstance(){
         if(singleInstance == null)
             singleInstance= new EndGame();
         return singleInstance;
     }
 
+    /**
+     * This method is used to construct the display of the endgame scene after the main game scene
+     * @param endGameScene scene for which the EndGameShow can be assigned to
+     * @param root the initial Group
+     * @param primaryStage the stage at which the application was first started
+     * @param score the score achieved by the user in the main game
+     * @param haveEmptyCell the value of haveEmptyCell from the main game to determine if the user wins or losses the game
+     */
     public void endGameShow(Scene endGameScene, Group root, Stage primaryStage,long score, int haveEmptyCell) {
         
         long oldHigh = scoreclass.readFile();
@@ -104,7 +120,7 @@ public class EndGame extends Controller {
                 primaryStage.setScene(gameScene);
 
                 GameScene game = new GameScene();
-                game.game(gameScene, gameRoot, primaryStage, endGameScene, endgameRoot, winGameScene, winGameRoot);
+                game.game(gameScene, gameRoot, primaryStage, endGameScene, endgameRoot);
 
                 //show stage
                 primaryStage.show();

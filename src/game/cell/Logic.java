@@ -3,13 +3,21 @@ package game.cell;
 import javafx.scene.text.Text;
 import java.util.Random;
 
+/**
+ * This class is used to store the methods of the game logic
+ * @author LeoHaiKen Tan
+ */
+
 public abstract class Logic extends Data {
 
     //creating object for class TextMaker
     private TextMaker textMaker = TextMaker.getSingleInstance();
 
+    /**
+     * This method is used to spawn random numbers on the game board
+     */
     //function to fill in random 2,4 into open cells
-    protected void randomFillNumber(int turn) {
+    protected void randomFillNumber() {
 
         Cell[][] emptyCells = new Cell[n][n];
         int a = 0;
@@ -66,6 +74,9 @@ public abstract class Logic extends Data {
         }
     }
 
+    /**
+     * This method is called when the user intends to move the cells left
+     */
     //moving the cells left
     protected void moveLeft() {
         for (int i = 0; i < n; i++) {
@@ -77,7 +88,9 @@ public abstract class Logic extends Data {
             }
         }
     }
-
+    /**
+     * This method is called when the user intends to move the cells right
+     */
     //moving the cells right
     protected void moveRight() {
         for (int i = 0; i < n; i++) {
@@ -89,7 +102,9 @@ public abstract class Logic extends Data {
             }
         }
     }
-
+    /**
+     * This method is called when the user intends to move the cells up
+     */
     //moving the cells up
     protected void moveUp() {
         for (int j = 0; j < n; j++) {
@@ -102,7 +117,9 @@ public abstract class Logic extends Data {
         }
 
     }
-
+    /**
+     * This method is called when the user intends to move the cells down
+     */
     //moving the cells down
     protected void moveDown() {
         for (int j = 0; j < n; j++) {
@@ -116,6 +133,15 @@ public abstract class Logic extends Data {
 
     }
 
+    /**
+     * This method determines if the cell horizontally can be added to one another
+     * @param i the x-axis index of the current cell passed
+     * @param j the y-axis index of the current cell passed
+     * @param des the index on the x axis of the adjacent cell in the direction of the current cell passed
+     * @param sign -1 for left, 1 for right
+     * @return a boolean value, true if it can be moved, false for the later
+     */
+
     //determining if the cell can be moved horizontally can be added
     private boolean isValidDesH(int i, int j, int des, int sign) {
         if (des + sign < n && des + sign >= 0) {
@@ -127,6 +153,13 @@ public abstract class Logic extends Data {
         return false;
     }
 
+    /**
+     * This method is used to calculate the new values of the cells on the board when moved horizontally
+     * @param i the x-axis index of the current cell passed
+     * @param j the y-axis index of the current cell passed
+     * @param des the index on the y axis of the adjacent cell in the direction of the current cell passed
+     * @param sign -1 for left, 1 for right
+     */
     //changing cell data horizontally when moving
     private void moveHorizontally(int i, int j, int des, int sign) {
         if (isValidDesH(i, j, des, sign)){ //if true adding
@@ -150,6 +183,14 @@ public abstract class Logic extends Data {
 
     }
 
+    /**
+     *This method determines if the cell vertically can be added to one another
+     * @param i the x-axis index of the current cell passed
+     * @param j the y-axis index of the current cell passed
+     * @param des the index on the x axis of the adjacent cell in the direction of the current cell passed
+     * @param sign -1 for down, 1 for up
+     * @return
+     */
     //determining if the cell can be moved vertically can be added
     private boolean isValidDesV(int i, int j, int des, int sign) {
         if (des + sign < n && des + sign >= 0)
@@ -160,6 +201,13 @@ public abstract class Logic extends Data {
         return false;
     }
 
+    /**
+     * This method is used to calculate the new values of the cells on the board when moved vertically
+     * @param i the x-axis index of the current cell passed
+     * @param j the y-axis index of the current cell passed
+     * @param des the index on the x axis of the adjacent cell in the direction of the current cell passed
+     * @param sign -1 for down, 1 for up
+     */
     //changing the cell data vertically when moving
     private void moveVertically(int i, int j, int des, int sign) {
         if (isValidDesV(i, j, des, sign)) {
@@ -181,6 +229,12 @@ public abstract class Logic extends Data {
         }
     }
 
+    /**
+     * Method to check if adjacent cells have identical values
+     * @param i the x-axis index of the current cell passed
+     * @param j the y-axis index of the current cell passed
+     * @return return true if there are identical values and false if not
+     */
     //compares value of cells below and to the right and checks if equal
     private boolean haveSameNumberNearly(int i, int j) {
         if (i < n - 1 && j < n - 1) {
@@ -194,6 +248,13 @@ public abstract class Logic extends Data {
         return false;
     }
 
+    /**
+     *
+     * @param i the x-axis index of the current cell passed
+     * @param j the y-axis index of the current cell passed
+     * @param direct the direction the user intends to move
+     * @return index of one of the axis of the cell adjacent to the cell passed
+     */
     //switch cases to determine which way the cells will move
     private int passDestination(int i, int j, char direct) {
         int coordinate = j;
@@ -248,6 +309,10 @@ public abstract class Logic extends Data {
         return -1;
     }
 
+    /**
+     * Method to check if cells on the board cannot be moved in any direction
+     * @return return true if cells cannot be moved, false if can
+     */
     //check if cells below and right are equal if yes, then return false
     protected boolean canNotMove() {
         for (int i = 0; i < n; i++) {
@@ -260,6 +325,10 @@ public abstract class Logic extends Data {
         return true;
     }
 
+    /**
+     * Method to check for 2048 or available spots on the board
+     * @return returns 0 if 2048 is present, returns 1 if there is an empty cell and return -1 if all the tiles are filed
+     */
     //traverse the cells to search for 2048 then 0
     protected int  haveEmptyCell() {
         for (int i = 0; i < n; i++) {

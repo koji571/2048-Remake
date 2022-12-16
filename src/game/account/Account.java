@@ -2,6 +2,10 @@ package game.account;
 
 import java.util.ArrayList;
 
+/**
+ * This class is from the given source code and was not implemented
+ */
+
 public class Account implements Comparable<Account> {
     private long score = 0;
     private String userName ;

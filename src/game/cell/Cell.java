@@ -6,6 +6,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
+/**
+ * This class is used to store value for each individual cell
+ */
+
 public class Cell {
     private Rectangle rectangle;
     private Group root;
@@ -47,6 +51,10 @@ public class Cell {
         this.textClass = textClass;
     }
 
+    /**
+     * This method is used to overwrite a cell from the contents of another cell
+     * @param cell the cell that will be overwriten
+     */
 
     public void changeCell(Cell cell) {
         TextMaker.changeTwoText(textClass, cell.getTextClass());
@@ -64,6 +72,11 @@ public class Cell {
         cell.setColorByNumber(cell.getNumber());
     }
 
+    /**
+     * This method is used to add the contents of two cells together
+     * @param cell the cell whose contents will be added to
+     */
+
     //function to add number to two cells together
     public void adder(Cell cell) {
         cell.getTextClass().setText((cell.getNumber() + this.getNumber()) + "");
@@ -73,6 +86,11 @@ public class Cell {
         setColorByNumber(getNumber());
     }
 
+
+    /**
+     * This method will set the color of the cell based on the value it holds
+     * @param number the value of the cell to be colored
+     */
     //set colour of cells
     public void setColorByNumber(int number) {
         switch (number) {

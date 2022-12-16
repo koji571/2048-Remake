@@ -17,6 +17,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * This is the controller class of Menu.fxml
+ * @author LeoHaiKen Tan -modified
+ */
 public class Controller extends Data implements Initializable {
 
     protected static final int WIDTH = 900;
@@ -52,15 +56,21 @@ public class Controller extends Data implements Initializable {
     //setting default bgcolour
     public Color bgcolor = Color.rgb(189, 177, 92);
 
+    /**
+     * Method to change the color of the background with the one selected from the colorpicker
+     */
     //method to change the bgcolor
-    public void changeColor(ActionEvent event) {
+    public void changeColor() {
 
         Color myColor = myColorPicker.getValue();
         bgcolor = myColor;
     }
 
+    /**
+     * Method to allow the user to select a grid size of 3 and multiply their score by 2
+     */
     //allow user to change the grid size to 3
-    public void enableHard(ActionEvent event) {
+    public void enableHard() {
         Integer hardGrid = 3;
         if (hardCheckBox.isSelected()){
             myComboBox.getItems().add(hardGrid);
@@ -70,8 +80,12 @@ public class Controller extends Data implements Initializable {
         }
 
     }
+
+    /**
+     * Method to allow the user to select a grid size of 5 or 6 and multiply their score by 0.5
+     */
     //allow user to change the grid size to 5,6
-    public void setEasy(ActionEvent event) {
+    public void setEasy() {
         Integer[] easyGrid = {5,6};
         if (easyCheckBox.isSelected()){
             myComboBox.getItems().addAll(easyGrid);
@@ -81,11 +95,18 @@ public class Controller extends Data implements Initializable {
         }
     }
 
+    /**
+     * Method to change the grid size based on what the user selected in the combo box
+     */
     //change the grid size
-    public void changeGrid(ActionEvent event) {
+    public void changeGrid() {
         setN(myComboBox.getValue());
     }
 
+    /**
+     * method to display the HowTo.fxml file
+     * @throws IOException if stream to file cannot be written to or closed.
+     */
     //show the How To Play Stage
     public void toggleHow() throws IOException {
 
@@ -101,13 +122,21 @@ public class Controller extends Data implements Initializable {
 
     }
 
+    /**
+     * Called to initialize controller after its root element has been completely processed.
+     * @param url The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resourceBundle The resources used to localize the root object, or null if the root object was not localized.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //display sizes available
         myComboBox.getItems().add(4);
-        //disable the grid size selector on default
     }
 
+    /**
+     * This method is called when the user clicks the start button and is used to initialise the game
+     * @param event the ActionEvent Object to process
+     */
     //method to switch to the main game
     public void switchToGame(ActionEvent event) {
 
@@ -120,7 +149,7 @@ public class Controller extends Data implements Initializable {
         primaryStage.setScene(gameScene);
 
         GameScene game = new GameScene();
-        game.game(gameScene, gameRoot, primaryStage, endGameScene, endgameRoot, winGameScene, winGameRoot);
+        game.game(gameScene, gameRoot, primaryStage, endGameScene, endgameRoot);
 
         //show stage
         primaryStage.show();

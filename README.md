@@ -52,9 +52,9 @@ Student ID: 20412776
    Modification to the original game functions are:-  
    i. Modified the game function to include a condition when a valid key is pressed, i.e.(Arrow UP,DOWN,LEFT,RIGHT).   
    ii. Added boolean variable to check if the direction to be moved is valid and will spawn a random object.  
-   iii. Added boolean variable to prevent more than two cells to combine.   
-   iv. Score now adds up within moveHorizontally and moveVertically  
-   v. Modified hasEmptyCell method to search for a 2048 tile then 0 tile
+   iii. Added boolean variable to prevent more than two cells to combine in a single move.   
+   iv. Score now adds up within moveHorizontally and moveVertically.  
+   v. Modified hasEmptyCell method to search for a 2048 tile then 0 tile.
 
 3. EndGame  
    i. Allowed the stage to close when user wants to quit the program.  
@@ -62,5 +62,10 @@ Student ID: 20412776
    iii. Added condition if player wins the game a congratulatory messages appears.
    iv. Added text to tell user their final score and high Score.
 
-4. Controller
+4. Controller  
 i. Added functionality to this class to be used as a controller class for Menu.fxml
+
+5. Main
+i. Added icon and text to the main stage.
+ii. The application will launch a .fxml file on satrt.
+ii. Check for a score.txt

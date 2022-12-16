@@ -5,6 +5,11 @@ import javafx.scene.Group;
 
 import java.io.File;
 
+/**
+ * This class is used to initialise values that will be needed by other classes
+ * @author LeoHaiKen Tan
+ */
+
 public abstract class Data {
     //default number of cells horizontally, vertically
     protected static int n = 4;

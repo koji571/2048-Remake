@@ -11,9 +11,21 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+/**
+ * This class is used to construct the main game scene of the game
+ * @author LeoHaiKen Tan - modified
+ */
  public class GameScene extends Logic {
 
-    public void game(Scene gameScene, Group root, Stage primaryStage, Scene endGameScene, Group endGameRoot, Scene winGameScene, Group winGameRoot) {
+    /**
+     * This method is used to setup the scene of the main game
+     * @param gameScene the scene of the Game scene
+     * @param root the initial Group
+     * @param primaryStage the stage at which the application was first started
+     * @param endGameScene the scene of the end game screen
+     * @param endGameRoot the group of the end game scene
+     */
+    public void game(Scene gameScene, Group root, Stage primaryStage, Scene endGameScene, Group endGameRoot) {
         this.root = root;
 
         //assigning values to the cells
@@ -40,8 +52,8 @@ import javafx.stage.Stage;
         scoreText.setText("0");
 
         //fill two random numbers
-        randomFillNumber(1);
-        randomFillNumber(1);
+        randomFillNumber();
+        randomFillNumber();
 
         //scanning for button presses
         gameScene.addEventHandler(KeyEvent.KEY_PRESSED, key ->{
@@ -73,7 +85,7 @@ import javafx.stage.Stage;
                             root.getChildren().clear();
 
                     } else if((haveEmptyCell == 1 && val && move )) { //spawning new cell on the board if 0 and button pressed
-                        GameScene.this.randomFillNumber(2);
+                        GameScene.this.randomFillNumber();
                         scoreText.setText(score + "");
                     }
                     move = false;
