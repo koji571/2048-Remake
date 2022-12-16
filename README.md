@@ -32,7 +32,7 @@ Student ID: 20412776
 1. Ability to undo a move.
 - I was not sure how I could implement a retry button in an instance of GameScene without not being able to scan for arrow keys, and aslo how to store the values of the cells of the prior move.
 2. Account creation.
-- I did not have enough time to figure how to store account name with their unique highscore.
+- I did not have enough time to figure how to store account name with their unique high score.
 
 ## List of new Java classes
 1. Data  
@@ -65,7 +65,7 @@ Student ID: 20412776
 4. Controller  
 i. Added functionality to this class to be used as a controller class for Menu.fxml
 
-5. Main
-i. Added icon and text to the main stage.
-ii. The application will launch a .fxml file on satrt.
+5. Main  
+i. Added icon and text to the main stage.  
+ii. The application will launch a .fxml file on start.  
 ii. Check for a score.txt
